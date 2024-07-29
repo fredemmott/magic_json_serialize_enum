@@ -71,7 +71,7 @@ This project aims to only use standard C++, with compatibility for C++17 through
 | Linux | `clang++` | ✅ | ✅ | ✅  | 14.0.0 |
 | Linux | `g++` | ✅ | ✅ | ✅  | 11.4.0 |
 | MacOS | `clang++` | ✅ | ✅ | ✅  | AppleClang 15.0.15000309 |
-| Windows | `cl.exe` (MSVC) | ✅ | ✅ | ✅  | 19.40.33812.0 (MSVC 2022) |
+| Windows | `cl.exe` (MSVC) | ✅ | ✅ | ✅  | 19.40.33812.0 (VS 2022) |
 | Windows | `clang++.exe` | ✅ | ✅ | ✅  | 18.1.8 |
 | Windows | `clang-cl.exe` | ✅ | ✅ | ✅  | 18.1.8 |
 
