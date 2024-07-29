@@ -1,7 +1,7 @@
 # Copyright 2024 Frederick Emmott
 # SPDX-License-Identifier: MIT
 
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.22.1)
 
 project("fredemmott_magic_json_serialize_enum" VERSION 0.0.1 LANGUAGES CXX C)
 

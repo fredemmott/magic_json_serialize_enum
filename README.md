@@ -66,11 +66,15 @@ These functions are useful if you need further customization beyond `FREDEMMOTT_
 
 This project aims to only use standard C++, with compatibility for C++17 through C++23; it is currently tested on:
 
-| OS | Compiler | C++17 | C++20 | C++23 |
-|-|-|-|-|-|
-| Windows | `cl.exe` (MSVC) | ✅ | ✅ | ✅  |
-| Windows | `clang++.exe` | ✅ | ✅ | ✅  |
-| Windows | `clang-cl.exe` | ✅ | ✅ | ✅  |
+| OS | Compiler | C++17 | C++20 | C++23 | Compiler Version |
+|-|-|-|-|-|-|
+| Linux | `clang++` | ✅ | ✅ | ✅  | 14.0.0 |
+| Linux | `g++` | ✅ | ✅ | ✅  | 11.4.0 |
+| Windows | `cl.exe` (MSVC) | ✅ | ✅ | ✅  | 19.40.33812.0 (MSVC 2022) |
+| Windows | `clang++.exe` | ✅ | ✅ | ✅  | 18.1.8 |
+| Windows | `clang-cl.exe` | ✅ | ✅ | ✅  | 18.1.8 |
+
+'Compiler Version' is the version available on GitHub Actions as of 2024-07-29.
 
 ## Including this in your project
 

@@ -6,14 +6,22 @@ jobs:
     runs-on: ${{matrix.runs-on}}
     strategy:
       matrix:
-        os: [windows]
-        compiler:
-          - cl
-          - clang++
-          - clang-cl
         include:
           - os: windows
-            runs-on: windows-latest
+            runs-on: windows-2022
+            compiler: cl
+          - os: windows
+            runs-on: windows-2022
+            compiler: clang++
+          - os: windows
+            runs-on: windows-2022
+            compiler: clang-cl
+          - os: linux
+            runs-on: ubuntu-22.04
+            compiler: clang++
+          - os: linux
+            runs-on: ubuntu-22.04
+            compiler: g++
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,7 +29,7 @@ jobs:
           fetch-depth: 0
           submodules: true
       - name: Download Ninja
-        if: ${{matrix.os}} == "windows"
+        if: matrix.os == 'windows'
         run: |
           Invoke-WebRequest https://github.com/ninja-build/ninja/releases/download/v1.12.1/ninja-win.zip -OutFile ninja.zip
           Expand-Archive ninja.zip -DestinationPath ${{runner.temp}}
@@ -45,6 +53,9 @@ jobs:
               $MtExe = "$KitsRoot/bin/$KitVersion.0/x64/mt.exe"
               $Args += "-DCMAKE_MT=$MtExe"
             }
+            "g++" {
+              $CCompiler="gcc"
+            }
             default { $CCompiler="${{matrix.compiler}}" }
           }
           # cl.exe is not in PATH, but CMake will find it with the msbuild generator
@@ -67,6 +78,7 @@ jobs:
             @args
       - name: Build
         working-directory: build
+        shell: pwsh
         run: |
           cmake `
             --build . `
