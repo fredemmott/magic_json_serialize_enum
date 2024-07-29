@@ -1,3 +1,9 @@
-[submodule "third-party/vcpkg"]
-	path = third-party/vcpkg
-	url = https://github.com/Microsoft/vcpkg.git
+[submodule "third-party/nlohmann_json"]
+	path = third-party/nlohmann_json
+	url = https://github.com/nlohmann/json.git
+[submodule "third-party/magic_enum"]
+	path = third-party/magic_enum
+	url = https://github.com/Neargye/magic_enum.git
+[submodule "third-party/catch2"]
+	path = third-party/catch2
+	url = https://github.com/catchorg/Catch2.git

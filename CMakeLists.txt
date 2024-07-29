@@ -3,34 +3,22 @@
 
 cmake_minimum_required(VERSION 3.27)
 
-# Enable CMAKE_MSVC_RUNTIME_LIBRARY variable
-cmake_policy(SET CMP0091 NEW)
+project("fredemmott_magic_json_serialize_enum" VERSION 0.0.1 LANGUAGES CXX C)
 
-set(X_VCPKG_APPLOCAL_DEPS_INSTALL ON)
-
-if("${VCPKG_TARGET_TRIPLET}" MATCHES "-static$")
-  # https://github.com/microsoft/WindowsAppSDK/blob/main/docs/Coding-Guidelines/HybridCRT.md
-  set(
-    CMAKE_MSVC_RUNTIME_LIBRARY
-    "MultiThreaded$<$<CONFIG:Debug>:Debug>"
-  )
-  add_link_options(
-    "/DEFAULTLIB:ucrt$<$<CONFIG:Debug>:d>.lib" # include the dynamic UCRT
-    "/NODEFAULTLIB:libucrt$<$<CONFIG:Debug>:d>.lib" # remove the static UCRT 
-  )
-endif()
-
-set(
-  CMAKE_TOOLCHAIN_FILE
-  "${CMAKE_CURRENT_SOURCE_DIR}/third-party/vcpkg/scripts/buildsystems/vcpkg.cmake"
-  CACHE STRING "Vcpkg toolchain file"
+add_library("${PROJECT_NAME}" INTERFACE)
+add_library("${PROJECT_NAME}::${PROJECT_NAME}" ALIAS "${PROJECT_NAME}")
+target_include_directories(
+  "${PROJECT_NAME}"
+  INTERFACE
+  "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+if (PROJECT_IS_TOP_LEVEL)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_EXTENSIONS OFF)
 
-project(magic_json_serialize_enum VERSION 0.0.1 LANGUAGES CXX C)
+  include(CTest)
 
-include(CTest)
-
-add_subdirectory(tests)
+  add_subdirectory(third-party)
+  add_subdirectory(tests)
+endif()

@@ -1,10 +1,6 @@
 # Copyright 2024 Frederick Emmott
 # SPDX-License-Identifier: MIT
 
-find_package(Catch2 CONFIG REQUIRED)
-find_package(magic_enum CONFIG REQUIRED)
-find_package(nlohmann_json CONFIG REQUIRED)
-
 set(ENABLE_CPP23_DEFAULT OFF)
 if("cxx_std_23" IN_LIST CMAKE_CXX_COMPILE_FEATURES)
     message(STATUS "CMake reports that the compiler supports C++23")
@@ -15,6 +11,9 @@ endif()
 option(ENABLE_CPP17 "Enable C++17 build" ON)
 option(ENABLE_CPP20 "Enable C++20 build" ON)
 option(ENABLE_CPP23 "Enable C++23 build" ${ENABLE_CPP23_DEFAULT})
+
+message(STATUS "Compiler: ${CMAKE_CXX_COMPILER}")
+message(STATUS "Compiler: ${CMAKE_CXX_COMPILER_ID}")
 
 set(COMPILER_ID "${CMAKE_CXX_COMPILER_ID}")
 if(CMAKE_CXX_SIMULATE_ID)

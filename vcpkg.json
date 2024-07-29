@@ -1,7 +1,0 @@
-{
-  "dependencies": [
-    "nlohmann-json",
-    "magic-enum",
-    "catch2"
-  ]
-}
