@@ -1,6 +1,6 @@
 # magic_json_serialize_enum
 
-This project is a small, header-only library that uses [magic_enum](https://github.com/Neargye/magic_enum) to provide concise serialization for enums with [JSON for Modern C++, a.k.a 'nlohmann/json'](https://github.com/nlohmann/json).
+This project is a [small, header-only library](include/FredEmmott/magic_json_serialize_enum.hpp) that uses [magic_enum](https://github.com/Neargye/magic_enum) to provide concise serialization for enums with [JSON for Modern C++, a.k.a 'nlohmann/json'](https://github.com/nlohmann/json).
 
 It provides functions to encode enums as their name (e.g. `MyEnum::Foo` becomes `"Foo"`), or other JSON values.
 
@@ -80,7 +80,7 @@ This project aims to only use standard C++, with compatibility for C++17 through
 ## Including this in your project
 
 - add [magic_enum](https://github.com/Neargye/magic_enum) and [JSON for Modern C++, a.k.a 'nlohmann/json'](https://github.com/nlohmann/json) to using your favorite mechanism
-- either add [the header](https://github.com/fredemmott/magic_json_serialize_enum/tree/main/include/FredEmmott) to your project directly via a submodule or just copying it, or if you use cmake, you can use `add_subdirectory(... EXCLUDE_FROM_ALL)` to make the `fredemmott_magic_json_serialize_enum::fredemmott_magic_json_serialize_enum` library target available
+- either add [the header](include/FredEmmott/magic_json_serialize_enum.hpp) to your project directly via a submodule, or just copy it.  If you use CMake with a submodule or `FetchContent()`, you can use `add_subdirectory(... EXCLUDE_FROM_ALL)` to make the `fredemmott_magic_json_serialize_enum::fredemmott_magic_json_serialize_enum` library target available
 
 ## Building this project
 
