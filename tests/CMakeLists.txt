@@ -28,12 +28,6 @@ function(add_test_executable TARGET CPP_VERSION)
         overrides.cpp
     )
 
-    target_include_directories(
-        ${TARGET}
-        PRIVATE
-        "${CMAKE_CURRENT_SOURCE_DIR}/../include"
-    )
-
     target_link_libraries(
         ${TARGET}
         PRIVATE
@@ -41,6 +35,7 @@ function(add_test_executable TARGET CPP_VERSION)
         Catch2::Catch2WithMain
         nlohmann_json::nlohmann_json
         magic_enum::magic_enum
+        "${PROJECT_NAME}::${PROJECT_NAME}"
     )
 
     set_property(
