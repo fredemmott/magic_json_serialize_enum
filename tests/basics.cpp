@@ -5,8 +5,6 @@
 
 #include <FredEmmott/magic_json_serialize_enum.hpp>
 
-namespace MJSE = FredEmmott::magic_json_serialize_enum;
-
 namespace {
 enum class TestEnum {
   Foo = 0,
