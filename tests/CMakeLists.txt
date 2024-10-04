@@ -35,7 +35,7 @@ function(add_test_executable TARGET CPP_VERSION)
         Catch2::Catch2WithMain
         nlohmann_json::nlohmann_json
         magic_enum::magic_enum
-        "${PROJECT_NAME}::${PROJECT_NAME}"
+        "${PROJECT_NAME}"
     )
 
     set_property(
