@@ -104,15 +104,18 @@ void to_json(nlohmann::json& j, const T v) {
 }// namespace FredEmmott::magic_json_serialize_enum
 
 #define FREDEMMOTT_MAGIC_JSON_SERIALIZE_ENUM(ENUM_TYPE) \
-  void from_json(const nlohmann::json& j, ENUM_TYPE& v) { \
+  template<class BasicJsonType> \
+  inline void from_json(const BasicJsonType& j, ENUM_TYPE& v) { \
     ::FredEmmott::magic_json_serialize_enum::from_json(j, v); \
   } \
-  void to_json(nlohmann::json& j, const ENUM_TYPE v) { \
+  template<class BasicJsonType> \
+  inline void to_json(BasicJsonType& j, const ENUM_TYPE v) { \
     ::FredEmmott::magic_json_serialize_enum::to_json(j, v); \
   }
 
 #define FREDEMMOTT_MAGIC_JSON_SERIALIZE_ENUM_WITH_OVERRIDES(ENUM_TYPE, ...) \
-  void to_json(nlohmann::json& j, const ENUM_TYPE v) { \
+  template<class BasicJsonType> \
+  inline void to_json(BasicJsonType& j, const ENUM_TYPE v) { \
     namespace MJSE = ::FredEmmott::magic_json_serialize_enum; \
     static const MJSE::Pair<ENUM_TYPE> prepend[] = __VA_ARGS__; \
     static const auto prependCPP \
@@ -122,7 +125,8 @@ void to_json(nlohmann::json& j, const T v) {
     } \
     MJSE::to_json<ENUM_TYPE>(j, v); \
   } \
-  void from_json(const nlohmann::json& j, ENUM_TYPE& v) { \
+  template<class BasicJsonType> \
+  inline void from_json(const BasicJsonType& j, ENUM_TYPE& v) { \
     namespace MJSE = ::FredEmmott::magic_json_serialize_enum; \
     static const MJSE::Pair<ENUM_TYPE> prepend[] = __VA_ARGS__; \
     static const auto prependCPP \
