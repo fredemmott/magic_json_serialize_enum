@@ -8,7 +8,13 @@
 #include <array>
 #include <type_traits>
 
+#if __has_include(<magic_enum/magic_enum.hpp>)
+#include <magic_enum/magic_enum.hpp>
+#elif __has_include(<magic_enum.hpp>)
 #include <magic_enum.hpp>
+#else
+#error "Couldn't find magic_enum.hpp"
+#endif
 #include <nlohmann/json.hpp>
 
 namespace FredEmmott::magic_json_serialize_enum {
